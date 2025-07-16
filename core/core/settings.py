@@ -50,7 +50,6 @@ EXTERNAL_APPS = [
     'rest_framework_simplejwt',
     'API',
     'accounts',
-    'ewaste',
 ]
 
 INSTALLED_APPS += EXTERNAL_APPS
