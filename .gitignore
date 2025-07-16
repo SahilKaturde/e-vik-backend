@@ -1,0 +1,14 @@
+# Ignore Python virtual environments
+env/
+venv/
+
+# Ignore Django secret stuff
+*.env
+
+# Ignore __pycache__ and migrations
+__pycache__/
+*.pyc
+db.sqlite3
+
+# Ignore static files created after collectstatic
+staticfiles/
