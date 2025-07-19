@@ -23,7 +23,7 @@ ALLOWED_HOSTS = []
 if env_host:
     ALLOWED_HOSTS.append(env_host)
 else:
-    ALLOWED_HOSTS.append('localhost')
+    ALLOWED_HOSTS += ['localhost', '127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
