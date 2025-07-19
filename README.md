@@ -38,16 +38,3 @@ This backend powers the entire movement — handling data, security, and logic t
 
 ---
 
-## 📁 Project Structure
-
-```bash
-e-vik-backend/
-├── core/                  # Main Django app
-│   ├── models.py          # Custom models (User, Ewaste, EcoPoint, Reward)
-│   ├── serializers.py     # DRF serializers
-│   ├── views.py           # API views
-│   ├── urls.py            # Endpoint routes
-│   └── permissions.py     # Role-based access
-├── eco_backend/           # Project settings
-├── manage.py
-└── requirements.txt
