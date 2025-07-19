@@ -33,7 +33,7 @@ This backend powers the entire movement — handling data, security, and logic t
 - **Django 4+**
 - **Django REST Framework**
 - **Simple JWT**
-- **SQLite / PostgreSQL**
+- **PostgreSQL**
 - **CORS, Token Auth, Admin Panel**
 
 ---
