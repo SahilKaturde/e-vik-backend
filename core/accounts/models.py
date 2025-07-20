@@ -28,6 +28,7 @@ class Ewaste(models.Model):
     description = models.TextField()
     address = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
+    awarded_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='given_points')
 
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='submitted')
     drop_location = models.ForeignKey('DropCenter', on_delete=models.SET_NULL, null=True, blank=True)
@@ -119,3 +120,22 @@ class UserReward(models.Model):
     def __str__(self):
         return f"{self.user.username} redeemed {self.reward.name}"
 
+
+class Notification(models.Model):
+    NOTIF_TYPE = [
+        ('status',   'Status Update'),
+        ('points',   'Eco‑Points Awarded'),
+        # add more types if you need
+    ]
+    user        = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notifications')
+    ewaste      = models.ForeignKey(Ewaste, on_delete=models.CASCADE, null=True, blank=True)
+    notif_type  = models.CharField(max_length=20, choices=NOTIF_TYPE)
+    message     = models.TextField()
+    is_read     = models.BooleanField(default=False)
+    created_at  = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"{self.get_notif_type_display()} to {self.user.username}"

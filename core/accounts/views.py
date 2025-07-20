@@ -215,3 +215,19 @@ class RewardMatchView(APIView):
             "total_eco_points": total_points,
             "matched_rewards": serializer.data
         })
+
+from rest_framework import viewsets, permissions
+from .models import Notification
+from .serializers import NotificationSerializer
+
+class NotificationViewSet(viewsets.ModelViewSet):
+    serializer_class   = NotificationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Notification.objects.filter(user=self.request.user)
+
+    # allow marking as read
+    def partial_update(self, request, *args, **kwargs):
+        # client can PATCH { is_read: true } to mark read
+        return super().partial_update(request, *args, **kwargs)

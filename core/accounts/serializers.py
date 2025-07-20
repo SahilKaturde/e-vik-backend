@@ -1,6 +1,14 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import UserProfile,Ewaste,Reward
+from .models import Notification
+
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = ['id', 'ewaste', 'notif_type', 'message', 'is_read', 'created_at']
+        read_only_fields = ['id', 'created_at']
+
 
 class RegisterSerializer(serializers.ModelSerializer):
     address = serializers.CharField(write_only=True, required=False)
