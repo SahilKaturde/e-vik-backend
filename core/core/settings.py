@@ -135,6 +135,6 @@ SIMPLE_JWT = {
 # CORS
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
-    'https://keen-crisp-42f9d5.netlify.app/',
+    'https://keen-crisp-42f9d5.netlify.app',   # <-- Corrected
 ]
 
